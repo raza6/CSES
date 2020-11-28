@@ -10,14 +10,15 @@ int main()
 
     //vector<int> values(arrSize);
     vector<int> lis(arrSize, 0); //1 for dumb impl, 0 for log
+    vector<int> indices(arrSize, -1);
 
-    int best = 0;
+    int len = 0;
     for (int i = 0; i < arrSize; i++) {
         int currValue;
         cin >> currValue;
-        int idx = lower_bound(lis.begin(), lis.begin() + best, currValue) - lis.begin();
+        int idx = lower_bound(lis.begin(), lis.begin() + len, currValue) - lis.begin();
         lis[idx] = currValue;
-        best = max(best, idx + 1);
+        len = max(len, idx + 1);
     }
 
     /*
@@ -32,6 +33,6 @@ int main()
     }
     */
 
-    cout << best << endl;
+    cout << len << endl;
 }
 
